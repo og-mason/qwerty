@@ -3,7 +3,7 @@ from storage import ScoreStorage
 
 def main():
     storage = ScoreStorage()
-    user_id = "local_player"  # в боте будет tg user_id
+    user_id = "local_player" 
     game = NumberGuessGame(user_id, storage)
 
     print("🎮 Добро пожаловать в игру 'Угадай число'!")
