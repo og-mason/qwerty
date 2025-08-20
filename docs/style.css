@@ -90,17 +90,9 @@ button:hover {
 .star {
   position: absolute;
   font-size: 20px;
-  pointer-events: none;
-}
-
-.star.gold {
   color: gold;
   animation: rise 1s ease-out forwards;
-}
-
-.star.red {
-  color: red;
-  animation: fall 1s ease-out forwards;
+  pointer-events: none;
 }
 
 @keyframes rise {
@@ -110,17 +102,6 @@ button:hover {
   }
   100% {
     transform: translateY(-50px) scale(1.5);
-    opacity: 0;
-  }
-}
-
-@keyframes fall {
-  0% {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(50px) scale(1.2);
     opacity: 0;
   }
 }
