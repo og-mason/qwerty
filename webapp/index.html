@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Угадай число 🎮</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🎮 Угадай число</h1>
+    <p class="rules">Правила: 🎯 точное попадание = +3, ±5 = +1, иначе -1</p>
+
+    <div class="game-box">
+      <input type="number" id="guess" placeholder="Введи число (1-100)">
+      <button onclick="sendGuess()">Проверить</button>
+    </div>
+
+    <p id="result" class="result"></p>
+    <p id="score" class="score">Счёт: 0</p>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
