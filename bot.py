@@ -1,60 +1,3 @@
-# import asyncio
-# import logging
-# import random
-# from aiogram import Bot, Dispatcher, types
-# from aiogram.filters import Command
-# from config import BOT_TOKEN
-# from storage import ScoreStorage
-# from game_logic import NumberGuessGame
-
-# logging.basicConfig(level=logging.INFO)
-
-# # Инициализация
-# bot = Bot(token=BOT_TOKEN)
-# dp = Dispatcher()
-
-# # Хранилище
-# storage = ScoreStorage()
-# games = {}  # user_id -> NumberGuessGame
-
-
-# @dp.message(Command("start"))
-# async def start_game(message: types.Message):
-#     user_id = str(message.from_user.id)
-#     games[user_id] = NumberGuessGame(user_id, storage)
-#     await message.answer(
-#         "🎮 Добро пожаловать в игру 'Угадай число'!\n\n"
-#         "Правила:\n"
-#         " - 🎯 Точное попадание = +3 очка\n"
-#         " - ±5 от числа = +1 очко\n"
-#         " - иначе -1 очко\n\n"
-#         "Введи число от 1 до 100 👇"
-#     )
-
-# @dp.message()
-# async def handle_guess(message: types.Message):
-#     user_id = str(message.from_user.id)
-
-#     if user_id not in games:
-#         games[user_id] = NumberGuessGame(user_id, storage)
-
-#     try:
-#         number = int(message.text)
-#     except ValueError:
-#         await message.answer("⚠️ Введи число от 1 до 100!")
-#         return
-
-#     game = games[user_id]
-#     result = game.guess(number)
-#     await message.answer(result)
-
-# async def main():
-#     await dp.start_polling(bot)
-
-# if __name__ == "__main__":
-#     asyncio.run(main())
-
-
 import asyncio
 import logging
 from aiogram import Bot, Dispatcher, types
@@ -67,7 +10,7 @@ logging.basicConfig(level=logging.INFO)
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
 
-WEBAPP_URL = "https://yourdomain.com/game"  # здесь будет твой URL (где лежит webapp)
+WEBAPP_URL = "https://og-mason.github.io/qwerty/" 
 
 @dp.message(Command("start"))
 async def cmd_start(message: types.Message):
@@ -78,8 +21,13 @@ async def cmd_start(message: types.Message):
         resize_keyboard=True
     )
     await message.answer(
-        "Привет 👋 Это игра 🎮 'Угадай число'!\n"
-        "Жми кнопку ниже, чтобы открыть игру 👇",
+    "Привет 👋 Добро пожаловать в игру 🎮 'Угадай число'!\n\n"
+    "Правила простые:\n"
+    "🎯 Точное попадание: +3 очка\n"
+    "👍 Почти угадал (±5): +1 очко\n"
+    "❌ Промах: -1 очко\n\n"
+    "Каждое очко = 1 звезда ⭐ в Telegram!\n\n"
+    "Жми кнопку ниже, чтобы начать играть и зарабатывать 👇",
         reply_markup=keyboard
     )
 
