@@ -24,8 +24,38 @@ function sendGuess() {
     result = `❌ Не угадал. Загаданное число было ${target}. -1 очко`;
   }
 
-  document.getElementById("result").innerText = result;
-  document.getElementById("score").innerText = "Счёт: " + score;
+score += points;
+  showResult(result);
+  updateScore(score);
+
+  if (points > 0) {
+    for (let i = 0; i < points; i++) {
+      createStar();
+    }
+  }
 
   input.value = "";
+}
+
+function showResult(text) {
+  const resultEl = document.getElementById("result");
+  resultEl.innerText = text;
+}
+
+function updateScore(value) {
+  document.getElementById("score").innerText = "Счёт: " + value;
+}
+
+function createStar() {
+  const star = document.createElement("span");
+  star.className = "star";
+  star.innerText = "⭐";
+  const container = document.querySelector(".container");
+  star.style.left = `${50 + Math.random() * 100}px`;
+  star.style.top = "0px";
+  container.appendChild(star);
+
+  setTimeout(() => {
+    star.remove();
+  }, 1000);
 }
