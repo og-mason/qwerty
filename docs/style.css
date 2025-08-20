@@ -5,25 +5,34 @@ body {
   text-align: center;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 .container {
-  max-width: 600px;
-  margin: 50px auto;
-  background: #0f3460;
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0px 4px 20px rgba(0,0,0,0.5);
+  max-width: 500px;
+  margin: 60px auto;
+  background: linear-gradient(145deg, #0f3460, #1b1b2f);
+  border-radius: 25px;
+  padding: 30px 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.container:hover {
+  transform: translateY(-5px);
 }
 
 h1 {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  font-size: 28px;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
 }
 
 .rules {
   font-size: 14px;
-  margin-bottom: 20px;
-  color: #ddd;
+  margin-bottom: 15px;
+  color: #ccc;
 }
 
 .game-box {
@@ -34,36 +43,65 @@ h1 {
 }
 
 input {
-  width: 120px;
-  padding: 10px;
-  border-radius: 10px;
+  width: 150px;
+  padding: 12px;
+  border-radius: 12px;
   border: none;
   outline: none;
   text-align: center;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+input:focus {
+  box-shadow: 0 0 10px #e94560;
 }
 
 button {
-  padding: 10px 15px;
+  padding: 12px 20px;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   background: #e94560;
   color: white;
   cursor: pointer;
   font-weight: bold;
+  font-size: 16px;
   transition: 0.3s;
 }
 
 button:hover {
   background: #ff2e63;
+  transform: scale(1.05);
 }
 
 .result {
   font-size: 18px;
-  margin-top: 10px;
+  margin-top: 15px;
+  min-height: 24px;
+  position: relative;
 }
 
 .score {
   font-size: 20px;
-  margin-top: 5px;
+  margin-top: 10px;
   font-weight: bold;
+}
+
+.star {
+  position: absolute;
+  font-size: 20px;
+  color: gold;
+  animation: rise 1s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50px) scale(1.5);
+    opacity: 0;
+  }
 }
