@@ -29,16 +29,20 @@ function sendGuess() {
 
   input.value = "";
 
-function createStar() {
-  const star = document.createElement("span");
-  star.className = "star";
-  star.innerText = "⭐";
+function createStars(points) {
   const container = document.querySelector(".container");
-  star.style.left = `${50 + Math.random() * 100}px`;
-  star.style.top = "0px";
-  container.appendChild(star);
+  const symbol = points > 10 ? "⭐" : "❌";
+  const count = Math.abs(points);
 
-  setTimeout(() => {
-    star.remove();
-  }, 1000);
+  for (let i = 0; i < count; i++) {
+    const star = document.createElement("span");
+    star.className = "star";
+    star.innerText = symbol;
+    star.style.left = `${50 + Math.random() * 100}px`;
+    star.style.top = "0px";
+    star.style.color = points > 10 ? "gold" : "red";
+    container.appendChild(star);
+
+    setTimeout(() => star.remove(), 1000);
+  }
 }
