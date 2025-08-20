@@ -28,19 +28,19 @@ function sendGuess() {
   document.getElementById("score").innerText = "Счёт: " + score;
 
   input.value = "";
+}
 
 function createStars(points) {
   const container = document.querySelector(".container");
-  const symbol = points > 10 ? "⭐" : "❌";
+  const symbol = points > 0 ? "⭐" : "❌";
   const count = Math.abs(points);
 
   for (let i = 0; i < count; i++) {
     const star = document.createElement("span");
-    star.className = "star";
+    star.className = "star " + (points > 0 ? "gold" : "red");
     star.innerText = symbol;
     star.style.left = `${50 + Math.random() * 100}px`;
     star.style.top = "0px";
-    star.style.color = points > 10 ? "gold" : "red";
     container.appendChild(star);
 
     setTimeout(() => star.remove(), 1000);
