@@ -18,13 +18,13 @@ class NumberGuessGame:
 
         if diff == 0:
             new_score = self.storage.update_score(self.user_id, 3)
-            result = f"🎯 Точно! Ты угадал число {self.target}. +3 очка!"
+            result = f"Точно! Ты угадал число {self.target}. +3 очка!"
         elif diff <= 5:
             new_score = self.storage.update_score(self.user_id, 1)
-            result = f"👍 Почти! Ты был близок к {self.target}. +1 очко!"
+            result = f"Почти! Ты был близок к {self.target}. +1 очко!"
         else:
             new_score = self.storage.update_score(self.user_id, -1)
-            result = f"❌ Не угадал. Загаданное число было {self.target}. -1 очко."
+            result = f"Не угадал. Загаданное число было {self.target}. -1 очко."
 
         self.reset()
         return result + f"\nТекущий счёт: {new_score}"
